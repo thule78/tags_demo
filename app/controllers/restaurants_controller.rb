@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!
 
+  def index
+    @restaurants = Restaurant.all
+  end
+
   def tagged
     if params[:tag].presents?
       @restaurants = Restaurant.tagged_with(params[:tag])
